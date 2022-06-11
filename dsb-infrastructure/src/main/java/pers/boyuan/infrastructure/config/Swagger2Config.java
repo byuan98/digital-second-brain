@@ -36,7 +36,7 @@ public class Swagger2Config {
                 .enable(swaggerEnable)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.boyuan.dsb.infrastructure.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("pers.boyuan.infrastructure.web"))
 //                        .or(RequestHandlerSelectors.basePackage("com.digital.cnzz.dop.http"))
 //                        .or(RequestHandlerSelectors.basePackage("com.digital.cnzz.core.controller")))
                 .paths(PathSelectors.any())

@@ -95,6 +95,13 @@
             <version>${knife4j-spring-boot-starter.version}</version>
         </dependency>
 
+        <!-- 导入hutool Java工具集 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-all.version}</version>
+        </dependency>
+
 
     </dependencies>
 
