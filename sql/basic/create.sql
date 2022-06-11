@@ -1,7 +1,8 @@
 -- 初始化数据库
 
 -- 创建字典表
-CREATE TABLE `data_dictionary`(
+CREATE TABLE `data_dictionary`
+(
     `id`     INT(11) PRIMARY KEY AUTO_INCREMENT COMMENT '自增主键id',
     `type`   VARCHAR(255) NOT NULL COMMENT '类型',
     `code`   VARCHAR(255) NOT NULL COMMENT '编码',

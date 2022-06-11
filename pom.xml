@@ -33,6 +33,7 @@
         <mybatis-plus.version>3.4.2</mybatis-plus.version>
         <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
+        <hutool-all.version>5.5.8</hutool-all.version>
     </properties>
 
     <dependencies>
@@ -50,17 +51,17 @@
         </dependency>
 
         <!-- jdbc -->
-        <!--        <dependency>-->
-        <!--            <groupId>mysql</groupId>-->
-        <!--            <artifactId>mysql-connector-java</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
 
         <!-- mybatis-plus -->
-        <!--        <dependency>-->
-        <!--            <groupId>com.baomidou</groupId>-->
-        <!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
-        <!--            <version>${mybatis-plus.version}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
 
         <!-- MapStruct -->
         <dependency>
@@ -73,6 +74,18 @@
             <artifactId>mapstruct-processor</artifactId>
             <version>${mapstruct-processor.version}</version>
         </dependency>
+
+        <!-- commons lang3 Java工具集 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
 
     </dependencies>
 
