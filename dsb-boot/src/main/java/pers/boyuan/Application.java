@@ -1,7 +1,8 @@
-package pers.boyuan.boot;
+package pers.boyuan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * dsb项目启动类

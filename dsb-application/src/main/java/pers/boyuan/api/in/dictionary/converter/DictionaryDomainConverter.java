@@ -1,0 +1,21 @@
+package pers.boyuan.api.in.dictionary.converter;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
+import pers.boyuan.domain.dictionary.model.DictionaryModel;
+
+import java.util.List;
+
+/**
+ * @author ZhangBoyuan
+ * @date 2022-06-11
+ */
+@Mapper
+public interface DictionaryDomainConverter {
+
+    DictionaryDomainConverter INSTANCE = Mappers.getMapper(DictionaryDomainConverter.class);
+
+    List<DictionaryModel> createDictionaryToModelList(List<CreateDictionaryAO> dictionaryAOList);
+
+}
