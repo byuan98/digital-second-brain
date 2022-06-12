@@ -8,7 +8,6 @@ import lombok.Data;
  */
 @Data
 public class DictionaryModel {
-
     /**
      * 主键id
      */
@@ -33,4 +32,5 @@ public class DictionaryModel {
      * 备注
      */
     private String remark;
+
 }
