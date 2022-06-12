@@ -5,6 +5,8 @@ import pers.boyuan.domain.dictionary.model.DictionaryModel;
 import java.util.List;
 
 /**
+ * 字典表底层数据库接口
+ *
  * @author ZhangBoyuan
  * @date 2022-06-11
  */
