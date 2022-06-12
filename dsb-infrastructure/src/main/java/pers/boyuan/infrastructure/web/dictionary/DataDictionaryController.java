@@ -13,10 +13,9 @@ import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
 import pers.boyuan.api.in.dictionary.DictionaryAppService;
 import pers.boyuan.common.constants.ResponseEnum;
 import pers.boyuan.common.dto.Response;
+import pers.boyuan.common.sheme.ValidationList;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * 字典表 前端控制器
@@ -34,7 +33,7 @@ public class DataDictionaryController {
 
     @PostMapping("/create")
     @ApiOperation("创建字典数据")
-    public Response create(@RequestBody @Valid List<CreateDictionaryAO> aoList) {
+    public Response create(@RequestBody @Valid ValidationList<CreateDictionaryAO> aoList) {
         Boolean createFlag = dictionaryAppService.create(aoList);
         return createFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
@@ -42,7 +41,6 @@ public class DataDictionaryController {
     @PostMapping("/delete")
     @ApiOperation("根据参数删除词典")
     public Response delete(@RequestBody DeleteDictionaryAO ao) {
-        System.out.println(ao);
         Boolean deleteFlag = dictionaryAppService.delete(ao);
         return deleteFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
