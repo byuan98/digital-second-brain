@@ -13,7 +13,9 @@ public class Response<T> {
     private String msg;
     private T data;
 
-    public Response(){}
+    public Response() {
+    }
+
     public Response(Integer code, String msg) {
         this(code, msg, null);
     }
@@ -41,7 +43,7 @@ public class Response<T> {
     }
 
     public static <T> Response<T> success(T data) {
-        Response<T> response =new Response();
+        Response<T> response = new Response();
         response.setCode(ResponseEnum.SUCCESS.getCode());
         response.setMsg(ResponseEnum.SUCCESS.getMessage());
         response.setData(data);

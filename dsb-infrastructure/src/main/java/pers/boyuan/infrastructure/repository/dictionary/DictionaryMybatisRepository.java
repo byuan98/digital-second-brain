@@ -12,6 +12,8 @@ import pers.boyuan.infrastructure.db.service.IDataDictionaryService;
 import java.util.List;
 
 /**
+ * 字典表底层数据库接口实现类
+ *
  * @author ZhangBoyuan
  * @date 2022-06-11
  */

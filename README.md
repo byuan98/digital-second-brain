@@ -12,7 +12,7 @@
 
 ## 文档
 
-接口文档地址: [http://localhost:9826/sbs/doc.html](http://localhost:9826/sbs/doc.html)
+接口文档地址: [http://localhost:9826/dsb/doc.html](http://localhost:9826/sbs/doc.html)
 
 
 

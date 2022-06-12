@@ -3,6 +3,8 @@ package pers.boyuan.api.in.dictionary;
 import java.util.List;
 
 /**
+ * 字典表应用服务
+ *
  * @author ZhangBoyuan
  * @date 2022-06-11
  */

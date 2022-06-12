@@ -1,7 +1,6 @@
 package pers.boyuan.common.constants;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
 /**
@@ -14,11 +13,11 @@ public enum ResponseEnum {
 
     /**
      * 0 -> 操作成功
-     * */
+     */
     SUCCESS(0, "操作成功"),
     /**
      * 1 -> 操作失败, 请稍后重试
-     * */
+     */
     FAIL(1, "操作失败，请稍后重试"),
     ;
 
