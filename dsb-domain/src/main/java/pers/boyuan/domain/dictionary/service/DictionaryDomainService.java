@@ -15,9 +15,17 @@ public interface DictionaryDomainService {
     /**
      * 创建字典
      *
-     * @param dictionaryList 字典列表
+     * @param modelList 字典模型列表
      * @return 是否创建成功
      */
-    Boolean createDictionary(List<DictionaryModel> dictionaryList);
+    Boolean create(List<DictionaryModel> modelList);
+
+    /**
+     * 根据参数删除字典
+     *
+     * @param model 删除参数
+     * @return 是否删除成功
+     */
+    Boolean delete(DictionaryModel model);
 
 }

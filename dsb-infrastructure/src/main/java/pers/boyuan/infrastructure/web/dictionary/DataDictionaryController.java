@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
+import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
 import pers.boyuan.api.in.dictionary.DictionaryAppService;
 import pers.boyuan.common.constants.ResponseEnum;
 import pers.boyuan.common.dto.Response;
+import pers.boyuan.common.sheme.ValidationList;
 
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * 字典表 前端控制器
@@ -30,10 +32,17 @@ public class DataDictionaryController {
     private DictionaryAppService dictionaryAppService;
 
     @PostMapping("/create")
-    @ApiOperation("创建字典")
-    public Response query(@RequestBody List<CreateDictionaryAO> dictionaryList) {
-        Boolean createFlag = dictionaryAppService.createDictionary(dictionaryList);
+    @ApiOperation("创建字典数据")
+    public Response create(@RequestBody @Valid ValidationList<CreateDictionaryAO> aoList) {
+        Boolean createFlag = dictionaryAppService.create(aoList);
         return createFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
+    }
+
+    @PostMapping("/delete")
+    @ApiOperation("根据参数删除词典")
+    public Response delete(@RequestBody DeleteDictionaryAO ao) {
+        Boolean deleteFlag = dictionaryAppService.delete(ao);
+        return deleteFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
 
 }

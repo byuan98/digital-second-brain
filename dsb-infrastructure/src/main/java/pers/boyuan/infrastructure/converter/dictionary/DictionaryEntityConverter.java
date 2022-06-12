@@ -16,6 +16,8 @@ public interface DictionaryEntityConverter {
 
     DictionaryEntityConverter INSTANCE = Mappers.getMapper(DictionaryEntityConverter.class);
 
+    DataDictionary modelToEntity(DictionaryModel model);
+
     List<DataDictionary> modelToEntityList(List<DictionaryModel> modelList);
 
 }

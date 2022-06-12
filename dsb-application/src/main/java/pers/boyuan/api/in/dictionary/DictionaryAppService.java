@@ -11,10 +11,19 @@ import java.util.List;
 public interface DictionaryAppService {
 
     /**
-     * 创建字典
+     * 新增字典数据
      *
-     * @param dictionaryList 字典列表
+     * @param aoList 入参列表
      * @return 是否创建成功
      */
-    Boolean createDictionary(List<CreateDictionaryAO> dictionaryList);
+    Boolean create(List<CreateDictionaryAO> aoList);
+
+    /**
+     * 根据参数删除相关字典数据
+     *
+     * @param ao 入参
+     * @return 是否创建成功
+     */
+    Boolean delete(DeleteDictionaryAO ao);
+
 }
