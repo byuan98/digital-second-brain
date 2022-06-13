@@ -1,6 +1,9 @@
 package pers.boyuan.api.in.dictionary;
 
+import pers.boyuan.api.out.dictionary.QueryDictionaryVO;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * 字典表应用服务
@@ -33,5 +36,13 @@ public interface DictionaryAppService {
      * @return 是否创建成功
      */
     Boolean update(UpdateDictionaryAO ao);
+
+    /**
+     * 查询字典
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 应用层转换后数据
+     */
+    Map<String, List<QueryDictionaryVO>> query(List<String> typeList);
 
 }

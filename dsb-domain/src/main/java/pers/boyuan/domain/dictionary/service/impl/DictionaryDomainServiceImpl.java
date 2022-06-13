@@ -1,6 +1,7 @@
 package pers.boyuan.domain.dictionary.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.common.util.ObjectFieldUtil;
@@ -8,8 +9,10 @@ import pers.boyuan.domain.dictionary.model.DictionaryModel;
 import pers.boyuan.domain.dictionary.repository.DictionaryRepository;
 import pers.boyuan.domain.dictionary.service.DictionaryDomainService;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 字典表领域层服务实现类
@@ -63,6 +66,26 @@ public class DictionaryDomainServiceImpl implements DictionaryDomainService {
     @Override
     public Boolean update(DictionaryModel model) {
         return dictionaryRepository.update(model);
+    }
+
+    /**
+     * 根据type查询字典数据
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 领域层处理后数据
+     */
+    @Override
+    public Map<String, List<DictionaryModel>> query(List<String> typeList) {
+        var queryResult = dictionaryRepository.query(typeList);
+
+        if (CollectionUtil.isEmpty(queryResult)) {
+            return Collections.emptyMap();
+        }
+
+        var result = queryResult.stream()
+                .collect(Collectors.groupingBy(DictionaryModel::getType));
+
+        return result;
     }
 
 }

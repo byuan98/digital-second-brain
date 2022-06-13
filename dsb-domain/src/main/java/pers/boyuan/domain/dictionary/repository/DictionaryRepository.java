@@ -36,4 +36,12 @@ public interface DictionaryRepository {
      */
     Boolean update(DictionaryModel model);
 
+    /**
+     * 根据type查询字典数据
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 数据库查询结果模型
+     */
+    List<DictionaryModel> query(List<String> typeList);
+
 }

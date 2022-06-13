@@ -20,4 +20,6 @@ public interface DictionaryEntityConverter {
 
     List<DataDictionary> modelToEntityList(List<DictionaryModel> modelList);
 
+    List<DictionaryModel> entityToModelList(List<DataDictionary> entityList);
+
 }

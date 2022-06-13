@@ -1,8 +1,10 @@
 package pers.boyuan.infrastructure.repository.dictionary;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import lombok.var;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,7 @@ import pers.boyuan.infrastructure.db.entity.DataDictionary;
 import pers.boyuan.infrastructure.db.mapper.DataDictionaryMapper;
 import pers.boyuan.infrastructure.db.service.IDataDictionaryService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -86,6 +89,28 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
                 .eq(DataDictionary::getId, entity.getId());
 
         return dictionaryService.update(updateWrapper);
+    }
+
+    /**
+     * 根据type查询字典数据
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 数据库查询结果模型
+     */
+    @Override
+    public List<DictionaryModel> query(List<String> typeList) {
+        LambdaQueryWrapper<DataDictionary> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper
+                .in(CollectionUtil.isNotEmpty(typeList), DataDictionary::getType, typeList);
+
+        var queryResult = dictionaryService.list(queryWrapper);
+
+        if (CollectionUtil.isNotEmpty(queryResult)) {
+            var result = DictionaryEntityConverter.INSTANCE.entityToModelList(queryResult);
+            return result;
+        }
+
+        return Collections.emptyList();
     }
 
 }

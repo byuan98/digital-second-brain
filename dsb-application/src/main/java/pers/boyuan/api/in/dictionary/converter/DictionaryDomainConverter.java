@@ -5,6 +5,7 @@ import org.mapstruct.factory.Mappers;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
 import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
 import pers.boyuan.api.in.dictionary.UpdateDictionaryAO;
+import pers.boyuan.api.out.dictionary.QueryDictionaryVO;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 
 import java.util.List;
@@ -23,5 +24,7 @@ public interface DictionaryDomainConverter {
     DictionaryModel deleteDictionaryToModel(DeleteDictionaryAO ao);
 
     DictionaryModel updateDictionaryToModel(UpdateDictionaryAO ao);
+
+    List<QueryDictionaryVO> modelToQueryDictionary(List<DictionaryModel> modelList);
 
 }

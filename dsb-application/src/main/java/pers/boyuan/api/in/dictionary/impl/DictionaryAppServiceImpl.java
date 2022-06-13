@@ -1,6 +1,7 @@
 package pers.boyuan.api.in.dictionary.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
@@ -8,10 +9,14 @@ import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
 import pers.boyuan.api.in.dictionary.DictionaryAppService;
 import pers.boyuan.api.in.dictionary.UpdateDictionaryAO;
 import pers.boyuan.api.in.dictionary.converter.DictionaryDomainConverter;
+import pers.boyuan.api.out.dictionary.QueryDictionaryVO;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 import pers.boyuan.domain.dictionary.service.DictionaryDomainService;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 字典表应用服务实现类
@@ -66,6 +71,28 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
         DictionaryModel model = DictionaryDomainConverter.INSTANCE.updateDictionaryToModel(ao);
 
         return dictionaryDomainService.update(model);
+    }
+
+    /**
+     * 查询字典
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 应用层转换后数据
+     */
+    @Override
+    public Map<String, List<QueryDictionaryVO>> query(List<String> typeList) {
+        var queryResult = dictionaryDomainService.query(typeList);
+
+        if (CollectionUtil.isEmpty(queryResult)) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, List<QueryDictionaryVO>> result = new HashMap(queryResult.keySet().size());
+        queryResult.keySet().forEach(
+                item -> result.put(item, DictionaryDomainConverter.INSTANCE.modelToQueryDictionary(queryResult.get(item)))
+        );
+
+        return result;
     }
 
 }

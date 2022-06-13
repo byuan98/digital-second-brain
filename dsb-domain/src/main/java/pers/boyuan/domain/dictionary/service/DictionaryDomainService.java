@@ -3,6 +3,7 @@ package pers.boyuan.domain.dictionary.service;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 字典表领域层服务
@@ -35,5 +36,13 @@ public interface DictionaryDomainService {
      * @return 是否创建成功
      */
     Boolean update(DictionaryModel model);
+
+    /**
+     * 根据type查询字典数据
+     *
+     * @param typeList 根据type列表查询对应数据，为空拉取全量
+     * @return 领域层处理后数据
+     */
+    Map<String, List<DictionaryModel>> query(List<String> typeList);
 
 }
