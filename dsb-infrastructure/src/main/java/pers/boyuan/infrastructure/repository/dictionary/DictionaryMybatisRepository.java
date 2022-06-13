@@ -41,7 +41,6 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
         List<DataDictionary> dataDictionaryList = DictionaryEntityConverter.INSTANCE.modelToEntityList(modelList);
 
         return dictionaryService.saveBatch(dataDictionaryList);
-
     }
 
     /**
