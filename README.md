@@ -1,5 +1,9 @@
 # 数字化第二大脑
 
+## 项目架构
+
+本项目设计思想参考领域驱动设计（Domain-driven design），架构参考六边形架构， 将项目分为六大模块：api、application、boot、common、domain、infrastructure、thirdparty
+
 ## 模块介绍
 
 - dsb-api 【包含入参出参定义】
@@ -10,7 +14,7 @@
 - dsb-infrastructure 【基础实施层】向其他层提供通用的技术能力
 - dsb-thirdparty 【三方组件】
 
-## 文档
+## api文档
 
 接口文档地址: [http://localhost:9826/dsb/doc.html](http://localhost:9826/sbs/doc.html)
 
