@@ -49,7 +49,7 @@ public class DictionaryDomainServiceImpl implements DictionaryDomainService {
      */
     @Override
     public Boolean delete(DictionaryModel model) {
-        // 添加判断字段属性是否全部为null，避免删除全表
+        // 添加判断字段属性是否全部为null或空字符串，避免删除全表
         if (ObjectFieldUtil.allBlank(model)) {
             return Boolean.FALSE;
         }
