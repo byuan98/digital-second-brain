@@ -28,4 +28,12 @@ public interface DictionaryDomainService {
      */
     Boolean delete(DictionaryModel model);
 
+    /**
+     * 根据参数更新字典数据
+     *
+     * @param model 入参
+     * @return 是否创建成功
+     */
+    Boolean update(DictionaryModel model);
+
 }

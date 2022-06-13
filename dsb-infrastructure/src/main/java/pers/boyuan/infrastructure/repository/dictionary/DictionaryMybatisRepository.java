@@ -1,6 +1,7 @@
 package pers.boyuan.infrastructure.repository.dictionary;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
     private IDataDictionaryService dictionaryService;
 
     @Autowired
-    private DataDictionaryMapper dataDictionaryMapper;
+    private DataDictionaryMapper dictionaryMapper;
 
     /**
      * 创建字典
@@ -64,6 +65,27 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
                 .eq(StringUtils.isNotBlank(entity.getName()), DataDictionary::getName, entity.getName());
 
         return dictionaryService.remove(queryWrapper);
+    }
+
+    /**
+     * 根据参数更新字典数据
+     *
+     * @param model 入参
+     * @return 是否创建成功
+     */
+    @Override
+    public Boolean update(DictionaryModel model) {
+        DataDictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
+
+        LambdaUpdateWrapper<DataDictionary> updateWrapper = Wrappers.lambdaUpdate();
+        updateWrapper
+                .set(StringUtils.isNotBlank(entity.getType()), DataDictionary::getType, entity.getType())
+                .set(StringUtils.isNotBlank(entity.getName()), DataDictionary::getName, entity.getName())
+                .set(StringUtils.isNotBlank(entity.getCode()), DataDictionary::getCode, entity.getCode())
+                .set(StringUtils.isNotBlank(entity.getRemark()), DataDictionary::getRemark, entity.getRemark())
+                .eq(DataDictionary::getId, entity.getId());
+
+        return dictionaryService.update(updateWrapper);
     }
 
 }

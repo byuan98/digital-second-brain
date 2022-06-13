@@ -9,6 +9,7 @@ import pers.boyuan.domain.dictionary.repository.DictionaryRepository;
 import pers.boyuan.domain.dictionary.service.DictionaryDomainService;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 字典表领域层服务实现类
@@ -52,4 +53,16 @@ public class DictionaryDomainServiceImpl implements DictionaryDomainService {
 
         return dictionaryRepository.delete(model);
     }
+
+    /**
+     * 根据参数更新字典数据
+     *
+     * @param model 入参
+     * @return 是否创建成功
+     */
+    @Override
+    public Boolean update(DictionaryModel model) {
+        return dictionaryRepository.update(model);
+    }
+
 }

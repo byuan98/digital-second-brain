@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
 import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
 import pers.boyuan.api.in.dictionary.DictionaryAppService;
+import pers.boyuan.api.in.dictionary.UpdateDictionaryAO;
 import pers.boyuan.api.in.dictionary.converter.DictionaryDomainConverter;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 import pers.boyuan.domain.dictionary.service.DictionaryDomainService;
@@ -53,4 +54,18 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
 
         return dictionaryDomainService.delete(model);
     }
+
+    /**
+     * 根据参数更新字典数据
+     *
+     * @param ao 入参
+     * @return 是否创建成功
+     */
+    @Override
+    public Boolean update(UpdateDictionaryAO ao) {
+        DictionaryModel model = DictionaryDomainConverter.INSTANCE.updateDictionaryToModel(ao);
+
+        return dictionaryDomainService.update(model);
+    }
+
 }
