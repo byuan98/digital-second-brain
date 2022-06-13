@@ -1,6 +1,9 @@
-package pers.boyuan.api.in.dictionary;
+package pers.boyuan.application.dictionary;
 
-import pers.boyuan.api.out.dictionary.QueryDictionaryVO;
+import pers.boyuan.application.in.dictionary.CreateDictionaryAO;
+import pers.boyuan.application.in.dictionary.DeleteDictionaryAO;
+import pers.boyuan.application.in.dictionary.UpdateDictionaryAO;
+import pers.boyuan.application.out.dictionary.QueryDictionaryVO;
 
 import java.util.List;
 import java.util.Map;
