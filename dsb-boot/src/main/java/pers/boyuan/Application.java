@@ -2,6 +2,7 @@ package pers.boyuan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * dsb项目启动类
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author ZhangBoyuan
  * @date 2022-06-11
  */
+@EnableCaching
 @SpringBootApplication
 public class Application {
 
