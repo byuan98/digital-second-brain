@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 查询字典出参
  *
@@ -12,7 +14,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel("查询字典出参")
-public class QueryDictionaryVO {
+public class QueryDictionaryVO implements Serializable {
     /**
      * 主键自增id
      */

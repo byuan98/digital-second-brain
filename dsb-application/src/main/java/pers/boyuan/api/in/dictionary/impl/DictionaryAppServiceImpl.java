@@ -3,6 +3,8 @@ package pers.boyuan.api.in.dictionary.impl;
 import cn.hutool.core.collection.CollectionUtil;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
 import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
@@ -37,6 +39,7 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
      * @return 是否创建成功
      */
     @Override
+    @CacheEvict(cacheNames = "dsb:cache:dictionary", allEntries = true)
     public Boolean create(List<CreateDictionaryAO> aoList) {
         if (CollectionUtil.isEmpty(aoList)) {
             return Boolean.FALSE;
@@ -54,6 +57,7 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
      * @return 是否创建成功
      */
     @Override
+    @CacheEvict(cacheNames = "dsb:cache:dictionary", allEntries = true)
     public Boolean delete(DeleteDictionaryAO ao) {
         DictionaryModel model = DictionaryDomainConverter.INSTANCE.deleteDictionaryToModel(ao);
 
@@ -67,6 +71,7 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
      * @return 是否创建成功
      */
     @Override
+    @CacheEvict(cacheNames = "dsb:cache:dictionary", allEntries = true)
     public Boolean update(UpdateDictionaryAO ao) {
         DictionaryModel model = DictionaryDomainConverter.INSTANCE.updateDictionaryToModel(ao);
 
@@ -80,6 +85,7 @@ public class DictionaryAppServiceImpl implements DictionaryAppService {
      * @return 应用层转换后数据
      */
     @Override
+    @Cacheable(cacheNames = "dsb:cache:dictionary")
     public Map<String, List<QueryDictionaryVO>> query(List<String> typeList) {
         var queryResult = dictionaryDomainService.query(typeList);
 
