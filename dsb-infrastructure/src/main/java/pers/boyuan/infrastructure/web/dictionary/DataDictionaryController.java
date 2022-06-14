@@ -1,6 +1,5 @@
 package pers.boyuan.infrastructure.web.dictionary;
 
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
