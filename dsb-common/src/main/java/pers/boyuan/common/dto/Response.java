@@ -10,7 +10,7 @@ import pers.boyuan.common.constants.ResponseEnum;
 @Data
 public class Response<T> {
     private Integer code;
-    private String msg;
+    private String message;
     private T data;
 
     public Response() {
@@ -23,7 +23,7 @@ public class Response<T> {
     public Response(Integer code, String msg, T data) {
         this.code = code;
         this.data = data;
-        this.msg = msg;
+        this.message = msg;
     }
 
     public static Response response(ResponseEnum responseEnum) {
@@ -45,7 +45,7 @@ public class Response<T> {
     public static <T> Response<T> success(T data) {
         Response<T> response = new Response();
         response.setCode(ResponseEnum.SUCCESS.getCode());
-        response.setMsg(ResponseEnum.SUCCESS.getMessage());
+        response.setMessage(ResponseEnum.SUCCESS.getMessage());
         response.setData(data);
         return response;
     }
