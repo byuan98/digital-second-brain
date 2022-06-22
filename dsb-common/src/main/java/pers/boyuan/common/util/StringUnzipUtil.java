@@ -13,10 +13,13 @@ import java.util.zip.GZIPInputStream;
  */
 public class StringUnzipUtil {
 
+    /**
+     * 解压gzip格式字符串
+     */
     public static String gzip(String str) {
         try {
-            byte[] test = str.getBytes(StandardCharsets.ISO_8859_1);
-            InputStream inputStream = new ByteArrayInputStream(test);
+            byte[] byteArray = str.getBytes(StandardCharsets.ISO_8859_1);
+            InputStream inputStream = new ByteArrayInputStream(byteArray);
             GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gzipInputStream));
             String result = bufferedReader
