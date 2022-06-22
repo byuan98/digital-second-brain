@@ -1,4 +1,4 @@
-package pers.boyuan.application.in.dictionary;
+package pers.boyuan.api.in.dictionary;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -2,10 +2,10 @@ package pers.boyuan.application.dictionary.converter;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import pers.boyuan.application.in.dictionary.CreateDictionaryAO;
-import pers.boyuan.application.in.dictionary.DeleteDictionaryAO;
-import pers.boyuan.application.in.dictionary.UpdateDictionaryAO;
-import pers.boyuan.application.out.dictionary.QueryDictionaryVO;
+import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
+import pers.boyuan.api.in.dictionary.DeleteDictionaryAO;
+import pers.boyuan.api.in.dictionary.UpdateDictionaryAO;
+import pers.boyuan.api.out.dictionary.QueryDictionaryVO;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 
 import java.util.List;
