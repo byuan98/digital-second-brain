@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import java.io.Serializable;
 
 /**
- * 字典表
+ * 字典表实体类
  *
  * @author ZhangBoyuan
  * @date 2022-06-11

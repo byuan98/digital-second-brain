@@ -16,7 +16,7 @@ import pers.boyuan.thirdparty.weather.WeatherService;
 import java.util.Objects;
 
 /**
- * 天气相关 前端控制器
+ * 天气相关接口 前端控制器
  *
  * @author ZhangBoyuan
  * @date 2022-06-14

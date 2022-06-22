@@ -3,6 +3,8 @@ package pers.boyuan.domain.dictionary.model;
 import lombok.Data;
 
 /**
+ * 字典表领域层模型
+ *
  * @author ZhangBoyuan
  * @date 2022-06-11
  */

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 字典表底层数据库接口实现类
+ * 字典表底层数据库接口 Mybatis 实现类
  *
  * @author ZhangBoyuan
  * @date 2022-06-11
