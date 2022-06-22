@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.boyuan.infrastructure.db.mapper.BillMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="pers.boyuan.infrastructure.db.entity.Bill">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="category_id" property="categoryId" />
+        <result column="content" property="content" />
+        <result column="remark" property="remark" />
+        <result column="amount" property="amount" />
+        <result column="year" property="year" />
+        <result column="month" property="month" />
+        <result column="day" property="day" />
+        <result column="week" property="week" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_update" property="gmtUpdate" />
+    </resultMap>
+
+</mapper>
