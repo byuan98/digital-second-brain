@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
 import pers.boyuan.domain.dictionary.repository.DictionaryRepository;
 import pers.boyuan.infrastructure.converter.dictionary.DictionaryEntityConverter;
-import pers.boyuan.infrastructure.db.entity.DataDictionary;
-import pers.boyuan.infrastructure.db.mapper.DataDictionaryMapper;
-import pers.boyuan.infrastructure.db.service.IDataDictionaryService;
+import pers.boyuan.infrastructure.db.entity.Dictionary;
+import pers.boyuan.infrastructure.db.mapper.DictionaryMapper;
+import pers.boyuan.infrastructure.db.service.IDictionaryService;
 
 import java.util.Collections;
 import java.util.List;
@@ -29,10 +29,10 @@ import java.util.Objects;
 public class DictionaryMybatisRepository implements DictionaryRepository {
 
     @Autowired
-    private IDataDictionaryService dictionaryService;
+    private IDictionaryService dictionaryService;
 
     @Autowired
-    private DataDictionaryMapper dictionaryMapper;
+    private DictionaryMapper dictionaryMapper;
 
     /**
      * 创建字典
@@ -42,7 +42,7 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean create(List<DictionaryModel> modelList) {
-        List<DataDictionary> dataDictionaryList = DictionaryEntityConverter.INSTANCE.modelToEntityList(modelList);
+        List<Dictionary> dataDictionaryList = DictionaryEntityConverter.INSTANCE.modelToEntityList(modelList);
 
         return dictionaryService.saveBatch(dataDictionaryList);
     }
@@ -55,17 +55,17 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean delete(DictionaryModel model) {
-        DataDictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
+        Dictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
 
-        LambdaQueryWrapper<DataDictionary> queryWrapper = Wrappers.lambdaQuery();
+        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper
-                .eq(Objects.nonNull(entity.getId()), DataDictionary::getId, entity.getId())
+                .eq(Objects.nonNull(entity.getId()), Dictionary::getId, entity.getId())
                 .or()
-                .eq(StringUtils.isNotBlank(entity.getType()), DataDictionary::getType, entity.getType())
+                .eq(StringUtils.isNotBlank(entity.getType()), Dictionary::getType, entity.getType())
                 .or()
-                .eq(StringUtils.isNotBlank(entity.getCode()), DataDictionary::getCode, entity.getCode())
+                .eq(StringUtils.isNotBlank(entity.getCode()), Dictionary::getCode, entity.getCode())
                 .or()
-                .eq(StringUtils.isNotBlank(entity.getName()), DataDictionary::getName, entity.getName());
+                .eq(StringUtils.isNotBlank(entity.getName()), Dictionary::getName, entity.getName());
 
         return dictionaryService.remove(queryWrapper);
     }
@@ -78,15 +78,15 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean update(DictionaryModel model) {
-        DataDictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
+        Dictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
 
-        LambdaUpdateWrapper<DataDictionary> updateWrapper = Wrappers.lambdaUpdate();
+        LambdaUpdateWrapper<Dictionary> updateWrapper = Wrappers.lambdaUpdate();
         updateWrapper
-                .set(StringUtils.isNotBlank(entity.getType()), DataDictionary::getType, entity.getType())
-                .set(StringUtils.isNotBlank(entity.getName()), DataDictionary::getName, entity.getName())
-                .set(StringUtils.isNotBlank(entity.getCode()), DataDictionary::getCode, entity.getCode())
-                .set(StringUtils.isNotBlank(entity.getRemark()), DataDictionary::getRemark, entity.getRemark())
-                .eq(DataDictionary::getId, entity.getId());
+                .set(StringUtils.isNotBlank(entity.getType()), Dictionary::getType, entity.getType())
+                .set(StringUtils.isNotBlank(entity.getName()), Dictionary::getName, entity.getName())
+                .set(StringUtils.isNotBlank(entity.getCode()), Dictionary::getCode, entity.getCode())
+                .set(StringUtils.isNotBlank(entity.getRemark()), Dictionary::getRemark, entity.getRemark())
+                .eq(Dictionary::getId, entity.getId());
 
         return dictionaryService.update(updateWrapper);
     }
@@ -99,9 +99,9 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public List<DictionaryModel> query(List<String> typeList) {
-        LambdaQueryWrapper<DataDictionary> queryWrapper = Wrappers.lambdaQuery();
+        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper
-                .in(CollectionUtil.isNotEmpty(typeList), DataDictionary::getType, typeList);
+                .in(CollectionUtil.isNotEmpty(typeList), Dictionary::getType, typeList);
 
         var queryResult = dictionaryService.list(queryWrapper);
 

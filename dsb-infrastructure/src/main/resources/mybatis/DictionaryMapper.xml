@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="pers.boyuan.infrastructure.db.mapper.DataDictionaryMapper">
+<mapper namespace="pers.boyuan.infrastructure.db.mapper.DictionaryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="pers.boyuan.infrastructure.db.entity.DataDictionary">
+    <resultMap id="BaseResultMap" type="pers.boyuan.infrastructure.db.entity.Dictionary">
         <id column="id" property="id"/>
         <result column="type" property="type"/>
         <result column="code" property="code"/>

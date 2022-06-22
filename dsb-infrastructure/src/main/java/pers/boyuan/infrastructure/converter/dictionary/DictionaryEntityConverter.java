@@ -3,7 +3,7 @@ package pers.boyuan.infrastructure.converter.dictionary;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import pers.boyuan.domain.dictionary.model.DictionaryModel;
-import pers.boyuan.infrastructure.db.entity.DataDictionary;
+import pers.boyuan.infrastructure.db.entity.Dictionary;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ public interface DictionaryEntityConverter {
 
     DictionaryEntityConverter INSTANCE = Mappers.getMapper(DictionaryEntityConverter.class);
 
-    DataDictionary modelToEntity(DictionaryModel model);
+    Dictionary modelToEntity(DictionaryModel model);
 
-    List<DataDictionary> modelToEntityList(List<DictionaryModel> modelList);
+    List<Dictionary> modelToEntityList(List<DictionaryModel> modelList);
 
-    List<DictionaryModel> entityToModelList(List<DataDictionary> entityList);
+    List<DictionaryModel> entityToModelList(List<Dictionary> entityList);
 
 }

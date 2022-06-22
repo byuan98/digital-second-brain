@@ -26,7 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/data/dictionary")
 @Api(tags = "字典相关接口")
-public class DataDictionaryController {
+public class DictionaryController {
 
     @Autowired
     private DictionaryAppService dictionaryAppService;
