@@ -14,11 +14,11 @@ CREATE TABLE `data_dictionary`
 CREATE TABLE `biz_bill`
 (
     `id`          BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键id',
-    `type`        VARCHAR(10) NOT NULL COMMENT '账单类型: income-收入, pay-支出',
+    `type`        TINYINT NOT NULL COMMENT '账单类型: 1 -> 收入, -1 -> 支出',
     `category_id` INT COMMENT '账单分类id, 关联data_dictionary表',
     `content`     VARCHAR(255) COMMENT '账单内容',
     `remark`      TEXT COMMENT '账单备注',
-    `amount`      INT(11) COMMENT '账单金额: 单位(分)',
+    `amount`      DECIMAL(10, 2) COMMENT '账单金额: 单位(元)',
     `year`        INT(4) COMMENT '账单所属年份yyyy',
     `month`       INT(2) COMMENT '账单所属月份: 1~12',
     `day`         INT(2) COMMENT '账单所属日: 1~31',
