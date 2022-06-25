@@ -14,7 +14,6 @@ import pers.boyuan.api.in.bill.QueryBillAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
 import pers.boyuan.api.out.bill.QueryBillVO;
 import pers.boyuan.application.bill.BillAppService;
-import pers.boyuan.common.constants.ResponseEnum;
 import pers.boyuan.common.dto.PageResponse;
 import pers.boyuan.common.dto.Response;
 
@@ -37,19 +36,19 @@ public class BillController {
 
     @PostMapping("/create")
     @ApiOperation("创建账单表数据")
-    public Response create(@RequestBody CreateBillPageAO ao) {
+    public Response<Boolean> create(@RequestBody CreateBillPageAO ao) {
         return null;
     }
 
     @PostMapping("/delete")
     @ApiOperation("根据条件逻辑删除账单表数据")
-    public Response delete(List<Long> idList) {
+    public Response<Boolean> delete(List<Long> idList) {
         return null;
     }
 
     @PostMapping("update")
     @ApiOperation("更新账单表数据")
-    public Response update(@RequestBody UpdateBillAO ao) {
+    public Response<Boolean> update(@RequestBody UpdateBillAO ao) {
         return null;
     }
 
