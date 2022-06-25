@@ -12,7 +12,10 @@ import pers.boyuan.api.in.bill.CreateBillPageAO;
 import pers.boyuan.api.in.bill.ExportBillAO;
 import pers.boyuan.api.in.bill.QueryBillAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
+import pers.boyuan.api.out.bill.QueryBillVO;
 import pers.boyuan.application.bill.BillAppService;
+import pers.boyuan.common.constants.ResponseEnum;
+import pers.boyuan.common.dto.PageResponse;
 import pers.boyuan.common.dto.Response;
 
 import javax.servlet.http.HttpServletResponse;
@@ -52,7 +55,7 @@ public class BillController {
 
     @PostMapping("/queryPage")
     @ApiOperation("查询账单表数据分页")
-    public Response queryPage(@RequestBody QueryBillAO ao) {
+    public PageResponse<QueryBillVO> queryPage(@RequestBody QueryBillAO ao) {
         return null;
     }
 
