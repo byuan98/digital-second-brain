@@ -58,6 +58,10 @@ public class PageResponse<T> extends Response {
         if (Objects.isNull(this.data)) {
             return Collections.emptyList();
         }
+        if (this.data.size() == 0) {
+            return Collections.emptyList();
+        }
+
         return new ArrayList<>(data);
     }
 
