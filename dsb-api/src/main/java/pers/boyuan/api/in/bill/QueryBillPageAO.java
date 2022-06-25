@@ -17,7 +17,7 @@ import java.math.BigDecimal;
  */
 @Data
 @ApiModel("查询账单入参")
-public class QueryBillAO extends AbstractPageQuery {
+public class QueryBillPageAO extends AbstractPageQuery {
     /**
      * 主键id
      */
