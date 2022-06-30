@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * 创建账单入参
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
  */
 @Data
 @ApiModel("创建账单入参")
-public class CreateBillPageAO {
+public class CreateBillAO {
     /**
      * 账单类型
      */
@@ -51,6 +52,6 @@ public class CreateBillPageAO {
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @ApiModelProperty("付款时间")
-    private String paymentTime;
+    private LocalDateTime paymentTime;
 
 }
