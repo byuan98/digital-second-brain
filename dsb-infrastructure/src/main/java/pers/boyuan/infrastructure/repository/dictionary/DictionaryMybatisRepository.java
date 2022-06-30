@@ -113,4 +113,27 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
         return Collections.emptyList();
     }
 
+    /**
+     * 根据type和code查询字典name
+     *
+     * @param type 字典表type
+     * @param code 字典表code
+     * @return 字典表name
+     */
+    @Override
+    public String queryNameByTypeAndCode(String type, String code) {
+        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper
+                .eq(Dictionary::getType, type)
+                .eq(Dictionary::getCode, code);
+
+        var queryResult = dictionaryService.getOne(queryWrapper);
+
+        if (Objects.nonNull(queryResult)) {
+            return queryResult.getName();
+        }
+
+        return null;
+    }
+
 }

@@ -44,4 +44,13 @@ public interface DictionaryRepository {
      */
     List<DictionaryModel> query(List<String> typeList);
 
+    /**
+     * 根据type和code查询字典name
+     *
+     * @param type 字典表type
+     * @param code 字典表code
+     * @return 字典表name
+     */
+    String queryNameByTypeAndCode(String type, String code);
+
 }
