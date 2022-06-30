@@ -1,6 +1,6 @@
 package pers.boyuan.application.bill;
 
-import pers.boyuan.api.in.bill.CreateBillPageAO;
+import pers.boyuan.api.in.bill.CreateBillAO;
 import pers.boyuan.api.in.bill.ExportBillAO;
 import pers.boyuan.api.in.bill.QueryBillPageAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
@@ -23,7 +23,7 @@ public interface BillAppService {
      * @param ao 创建账单表数据入参
      * @return 是否创建成功
      */
-    Boolean create(CreateBillPageAO ao);
+    Boolean create(CreateBillAO ao);
 
     /**
      * 根据主键id删除账单表数据

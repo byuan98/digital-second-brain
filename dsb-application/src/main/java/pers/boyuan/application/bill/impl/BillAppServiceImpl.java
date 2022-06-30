@@ -2,7 +2,7 @@ package pers.boyuan.application.bill.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pers.boyuan.api.in.bill.CreateBillPageAO;
+import pers.boyuan.api.in.bill.CreateBillAO;
 import pers.boyuan.api.in.bill.ExportBillAO;
 import pers.boyuan.api.in.bill.QueryBillPageAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
@@ -32,7 +32,7 @@ public class BillAppServiceImpl implements BillAppService {
      * @return 是否创建成功
      */
     @Override
-    public Boolean create(CreateBillPageAO ao) {
+    public Boolean create(CreateBillAO ao) {
         return null;
     }
 
