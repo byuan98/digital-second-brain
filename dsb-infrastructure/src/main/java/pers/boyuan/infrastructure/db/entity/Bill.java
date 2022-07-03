@@ -75,6 +75,11 @@ public class Bill implements Serializable {
     private Integer week;
 
     /**
+     * 付款时间
+     */
+    private LocalDateTime paymentTime;
+
+    /**
      * 创建时间
      */
     private LocalDateTime gmtCreate;
