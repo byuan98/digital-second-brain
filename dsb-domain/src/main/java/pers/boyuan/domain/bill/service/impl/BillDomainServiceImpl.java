@@ -40,7 +40,7 @@ public class BillDomainServiceImpl implements BillDomainService {
      */
     @Override
     public Boolean delete(List<Long> idList) {
-        return null;
+        return billRepository.delete(idList);
     }
 
     /**

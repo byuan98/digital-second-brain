@@ -41,7 +41,7 @@ public class BillController {
 
     @PostMapping("/delete")
     @ApiOperation("根据主键id删除账单表数据")
-    public Response<Boolean> delete(List<Long> idList) {
+    public Response<Boolean> delete(@RequestBody List<Long> idList) {
         Boolean deleteFlag = billAppService.delete(idList);
         return deleteFlag ? Response.success(Boolean.TRUE) : Response.error(ResponseEnum.FAIL);
     }

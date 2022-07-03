@@ -53,7 +53,10 @@ public class BillAppServiceImpl implements BillAppService {
      */
     @Override
     public Boolean delete(List<Long> idList) {
-        return null;
+        if (CollectionUtil.isEmpty(idList)) {
+            return Boolean.FALSE;
+        }
+        return billDomainService.delete(idList);
     }
 
     /**
