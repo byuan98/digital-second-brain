@@ -20,10 +20,10 @@ public interface BillAppService {
     /**
      * 创建账单表数据
      *
-     * @param ao 创建账单表数据入参
+     * @param aoList 创建账单表数据入参列表
      * @return 是否创建成功
      */
-    Boolean create(CreateBillAO ao);
+    Boolean create(List<CreateBillAO> aoList);
 
     /**
      * 根据主键id删除账单表数据

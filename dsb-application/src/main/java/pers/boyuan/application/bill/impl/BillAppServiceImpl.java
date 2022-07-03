@@ -1,5 +1,6 @@
 package pers.boyuan.application.bill.impl;
 
+import cn.hutool.core.collection.CollectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.api.in.bill.CreateBillAO;
@@ -8,6 +9,8 @@ import pers.boyuan.api.in.bill.QueryBillPageAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
 import pers.boyuan.api.out.bill.QueryBillVO;
 import pers.boyuan.application.bill.BillAppService;
+import pers.boyuan.application.bill.converter.BillDomainConverter;
+import pers.boyuan.domain.bill.model.BillModel;
 import pers.boyuan.domain.bill.service.BillDomainService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,12 +31,18 @@ public class BillAppServiceImpl implements BillAppService {
     /**
      * 创建账单表数据
      *
-     * @param ao 创建账单表数据入参
+     * @param aoList 创建账单表数据入参列表
      * @return 是否创建成功
      */
     @Override
-    public Boolean create(CreateBillAO ao) {
-        return null;
+    public Boolean create(List<CreateBillAO> aoList) {
+        if (CollectionUtil.isEmpty(aoList)) {
+            return Boolean.FALSE;
+        }
+
+        List<BillModel> modelList = BillDomainConverter.INSTANCE.createDictionaryToModelList(aoList);
+
+        return billDomainService.create(modelList);
     }
 
     /**
