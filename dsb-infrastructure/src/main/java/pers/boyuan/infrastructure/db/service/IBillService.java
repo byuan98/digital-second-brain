@@ -1,7 +1,7 @@
 package pers.boyuan.infrastructure.db.service;
 
-import pers.boyuan.infrastructure.db.entity.Bill;
 import com.baomidou.mybatisplus.extension.service.IService;
+import pers.boyuan.infrastructure.db.entity.Bill;
 
 /**
  * 消费账单表 服务类
