@@ -67,7 +67,8 @@ public class BillAppServiceImpl implements BillAppService {
      */
     @Override
     public Boolean update(UpdateBillAO ao) {
-        return null;
+        BillModel model = BillDomainConverter.INSTANCE.updateDictionaryToModel(ao);
+        return billDomainService.update(model);
     }
 
     /**

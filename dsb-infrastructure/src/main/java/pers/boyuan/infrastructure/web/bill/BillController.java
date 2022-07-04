@@ -3,7 +3,6 @@ package pers.boyuan.infrastructure.web.bill;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pers.boyuan.api.in.bill.CreateBillAO;
 import pers.boyuan.api.in.bill.ExportBillAO;
@@ -16,6 +15,7 @@ import pers.boyuan.common.dto.PageResponse;
 import pers.boyuan.common.dto.Response;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -48,7 +48,7 @@ public class BillController {
 
     @PostMapping("update")
     @ApiOperation("更新账单表数据")
-    public Response<Boolean> update(@RequestBody UpdateBillAO ao) {
+    public Response<Boolean> update(@RequestBody @Valid UpdateBillAO ao) {
         Boolean updateFlag = billAppService.update(ao);
         return updateFlag ? Response.success(Boolean.TRUE) : Response.error(ResponseEnum.FAIL);
     }

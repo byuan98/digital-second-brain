@@ -51,7 +51,7 @@ public class BillDomainServiceImpl implements BillDomainService {
      */
     @Override
     public Boolean update(BillModel model) {
-        return null;
+        return billRepository.update(model);
     }
 
     /**
