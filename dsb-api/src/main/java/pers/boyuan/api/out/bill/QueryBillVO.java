@@ -30,6 +30,18 @@ public class QueryBillVO {
     private String type;
 
     /**
+     * 账单类型名称
+     */
+    @ApiModelProperty("账单类型名称")
+    private String typeName;
+
+    /**
+     * 账单分类id，关联data_dictionary表
+     */
+    @ApiModelProperty("账单分类id，关联data_dictionary表")
+    private Integer categoryId;
+
+    /**
      * 账单分类
      */
     @ApiModelProperty("账单分类")
