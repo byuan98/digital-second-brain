@@ -20,7 +20,7 @@ public class CreateBeanUtil implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if (Objects.isNull(applicationContext)) {
+        if (Objects.isNull(CreateBeanUtil.applicationContext)) {
             CreateBeanUtil.applicationContext = applicationContext;
         }
     }
