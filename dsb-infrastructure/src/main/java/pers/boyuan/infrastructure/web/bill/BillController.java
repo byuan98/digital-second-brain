@@ -1,5 +1,6 @@
 package pers.boyuan.infrastructure.web.bill;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,8 @@ public class BillController {
     @PostMapping("/queryPage")
     @ApiOperation("查询账单表数据分页")
     public PageResponse<QueryBillVO> queryPage(@RequestBody QueryBillPageAO ao) {
-        return null;
+        IPage<QueryBillVO> iPage = billAppService.queryPage(ao);
+        return PageResponse.success(iPage.getTotal(), iPage.getCurrent(), iPage.getSize(), iPage.getRecords());
     }
 
     @GetMapping("exportExcel")

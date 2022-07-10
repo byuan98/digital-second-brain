@@ -1,5 +1,6 @@
 package pers.boyuan.application.bill;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import pers.boyuan.api.in.bill.CreateBillAO;
 import pers.boyuan.api.in.bill.ExportBillAO;
 import pers.boyuan.api.in.bill.QueryBillPageAO;
@@ -47,7 +48,7 @@ public interface BillAppService {
      * @param ao 查询账单表数据分页入参
      * @return 查询账单表分页数据
      */
-    List<QueryBillVO> queryPage(QueryBillPageAO ao);
+    IPage<QueryBillVO> queryPage(QueryBillPageAO ao);
 
     /**
      * 根据指定条件导出账单表数据为excel

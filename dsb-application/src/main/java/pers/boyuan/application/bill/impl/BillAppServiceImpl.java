@@ -1,6 +1,9 @@
 package pers.boyuan.application.bill.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.api.in.bill.CreateBillAO;
@@ -40,7 +43,7 @@ public class BillAppServiceImpl implements BillAppService {
             return Boolean.FALSE;
         }
 
-        List<BillModel> modelList = BillDomainConverter.INSTANCE.createDictionaryToModelList(aoList);
+        List<BillModel> modelList = BillDomainConverter.INSTANCE.createBillToModelList(aoList);
 
         return billDomainService.create(modelList);
     }
@@ -67,7 +70,7 @@ public class BillAppServiceImpl implements BillAppService {
      */
     @Override
     public Boolean update(UpdateBillAO ao) {
-        BillModel model = BillDomainConverter.INSTANCE.updateDictionaryToModel(ao);
+        BillModel model = BillDomainConverter.INSTANCE.updateToModel(ao);
         return billDomainService.update(model);
     }
 
@@ -78,8 +81,16 @@ public class BillAppServiceImpl implements BillAppService {
      * @return 查询账单表分页数据
      */
     @Override
-    public List<QueryBillVO> queryPage(QueryBillPageAO ao) {
-        return null;
+    public IPage<QueryBillVO> queryPage(QueryBillPageAO ao) {
+        IPage<QueryBillVO> result = new Page<>(ao.getPageIndex(), ao.getPageSize());
+
+        BillModel model = BillDomainConverter.INSTANCE.queryPageToModel(ao);
+        IPage<BillModel> modelPage = billDomainService.queryPage(model);
+
+        BeanUtils.copyProperties(modelPage, result);
+        result.setRecords(BillDomainConverter.INSTANCE.modelToQueryBill(modelPage.getRecords()));
+
+        return result;
     }
 
     /**

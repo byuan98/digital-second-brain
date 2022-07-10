@@ -1,5 +1,7 @@
 package pers.boyuan.domain.bill.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.domain.bill.model.BillModel;
@@ -61,8 +63,8 @@ public class BillDomainServiceImpl implements BillDomainService {
      * @return 查询账单表分页数据
      */
     @Override
-    public List<BillModel> queryPage(BillModel model) {
-        return null;
+    public IPage<BillModel> queryPage(BillModel model) {
+        return billRepository.queryPage(model, new Page<>(model.getPageIndex(), model.getPageSize()));
     }
 
     /**
