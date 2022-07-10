@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 public class BillModel {
 
-    private DictionaryDomainService dictionaryDomainService;
+    private DictionaryDomainService dictionaryDomainService = CreateBeanUtil.getBean(DictionaryDomainService.class);
 
     /**
      * 主键id
@@ -95,6 +95,16 @@ public class BillModel {
      */
     private String endPaymentTime;
 
+    /**
+     * 当前页
+     */
+    private Integer pageIndex;
+
+    /**
+     * 分页大小
+     */
+    private Integer pageSize;
+
     public BillModel() {
     }
 
@@ -123,7 +133,10 @@ public class BillModel {
     }
 
     public String getTypeName() {
-        return typeName;
+        if (Objects.nonNull(this.type) && Objects.isNull(this.typeName)) {
+            return BaseEnum.findByValue(BillEnum.BillTypeEnum.class, this.type).get().getText();
+        }
+        return this.typeName;
     }
 
     public void setTypeName(String typeName) {
@@ -143,6 +156,10 @@ public class BillModel {
     }
 
     public String getCategory() {
+        if (Objects.nonNull(this.categoryId) && Objects.isNull(this.category)) {
+            return dictionaryDomainService
+                    .queryNameByTypeAndCode(DictionaryTypeConstant.BILL_CATEGORY, String.valueOf(this.categoryId));
+        }
         return this.category;
     }
 
@@ -249,5 +266,21 @@ public class BillModel {
 
     public void setEndPaymentTime(String endPaymentTime) {
         this.endPaymentTime = endPaymentTime;
+    }
+
+    public Integer getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 }
