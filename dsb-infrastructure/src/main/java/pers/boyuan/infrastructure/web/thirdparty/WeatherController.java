@@ -1,6 +1,7 @@
 package pers.boyuan.infrastructure.web.thirdparty;
 
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import pers.boyuan.common.dto.Response;
 import pers.boyuan.common.util.StringUnzipUtil;
 import pers.boyuan.thirdparty.weather.WeatherService;
 
+import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -51,13 +53,13 @@ public class WeatherController {
 
     @GetMapping("/query")
     @ApiOperation("根据城市名称查询天气")
-    public Response query(@RequestParam(name = "city") String cityName) {
+    public Response query(@RequestParam(name = "city") String cityName) throws IOException {
         String unzipStr = StringUnzipUtil.gzip(weatherService.getCityWeather(cityName));
 
         if (Objects.nonNull(unzipStr)) {
-            JSONObject json = JSONObject.parseObject(unzipStr);
-            if (RESPONSE_SUCCESS_CODE.equals(json.getString(RESPONSE_STATUS_KEY))) {
-                return Response.success(json.getJSONObject(RESPONSE_DATA_KEY).getJSONArray(RESPONSE_FORECAST_KEY));
+            JsonNode jsonNode = new ObjectMapper().readValue(unzipStr, JsonNode.class);
+            if (RESPONSE_SUCCESS_CODE.equals(jsonNode.get(RESPONSE_STATUS_KEY).asText())) {
+                return Response.success(jsonNode.get(RESPONSE_DATA_KEY).get(RESPONSE_FORECAST_KEY));
             }
         }
 
