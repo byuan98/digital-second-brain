@@ -44,7 +44,7 @@ public class BillAppServiceImpl implements BillAppService {
             return Boolean.FALSE;
         }
 
-        List<BillModel> modelList = BillDomainConverter.INSTANCE.createBillToModelList(aoList);
+        var modelList = BillDomainConverter.INSTANCE.createBillToModelList(aoList);
 
         return billDomainService.create(modelList);
     }
@@ -86,7 +86,7 @@ public class BillAppServiceImpl implements BillAppService {
         IPage<QueryBillVO> result = new Page<>(ao.getPageIndex(), ao.getPageSize());
 
         var model = BillDomainConverter.INSTANCE.queryPageToModel(ao);
-        IPage<BillModel> modelPage = billDomainService.queryPage(model);
+        var modelPage = billDomainService.queryPage(model);
 
         BeanUtils.copyProperties(modelPage, result);
         result.setRecords(BillDomainConverter.INSTANCE.modelToQueryBill(modelPage.getRecords()));

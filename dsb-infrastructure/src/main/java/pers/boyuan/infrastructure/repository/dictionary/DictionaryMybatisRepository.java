@@ -1,8 +1,6 @@
 package pers.boyuan.infrastructure.repository.dictionary;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.var;
 import org.apache.commons.lang3.StringUtils;
@@ -42,7 +40,7 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean create(List<DictionaryModel> modelList) {
-        List<Dictionary> dataDictionaryList = DictionaryEntityConverter.INSTANCE.modelToEntityList(modelList);
+        var dataDictionaryList = DictionaryEntityConverter.INSTANCE.modelToEntityList(modelList);
 
         return dictionaryService.saveBatch(dataDictionaryList);
     }
@@ -55,10 +53,9 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean delete(DictionaryModel model) {
-        Dictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
+        var entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
 
-        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper
+        var queryWrapper = Wrappers.<Dictionary>lambdaQuery()
                 .eq(Objects.nonNull(entity.getId()), Dictionary::getId, entity.getId())
                 .or()
                 .eq(StringUtils.isNotBlank(entity.getType()), Dictionary::getType, entity.getType())
@@ -78,10 +75,9 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public Boolean update(DictionaryModel model) {
-        Dictionary entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
+        var entity = DictionaryEntityConverter.INSTANCE.modelToEntity(model);
 
-        LambdaUpdateWrapper<Dictionary> updateWrapper = Wrappers.lambdaUpdate();
-        updateWrapper
+        var updateWrapper = Wrappers.<Dictionary>lambdaUpdate()
                 .set(StringUtils.isNotBlank(entity.getType()), Dictionary::getType, entity.getType())
                 .set(StringUtils.isNotBlank(entity.getName()), Dictionary::getName, entity.getName())
                 .set(StringUtils.isNotBlank(entity.getCode()), Dictionary::getCode, entity.getCode())
@@ -99,8 +95,7 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public List<DictionaryModel> query(List<String> typeList) {
-        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper
+        var queryWrapper = Wrappers.<Dictionary>lambdaQuery()
                 .in(CollectionUtil.isNotEmpty(typeList), Dictionary::getType, typeList);
 
         var queryResult = dictionaryService.list(queryWrapper);
@@ -122,8 +117,7 @@ public class DictionaryMybatisRepository implements DictionaryRepository {
      */
     @Override
     public String queryNameByTypeAndCode(String type, String code) {
-        LambdaQueryWrapper<Dictionary> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper
+        var queryWrapper = Wrappers.<Dictionary>lambdaQuery()
                 .eq(Dictionary::getType, type)
                 .eq(Dictionary::getCode, code);
 

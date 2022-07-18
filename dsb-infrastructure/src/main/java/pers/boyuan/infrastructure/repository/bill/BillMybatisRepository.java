@@ -44,7 +44,7 @@ public class BillMybatisRepository implements BillRepository {
      */
     @Override
     public Boolean create(List<BillModel> modelList) {
-        List<Bill> billList = BillEntityConverter.INSTANCE.modelToEntityList(modelList);
+        var billList = BillEntityConverter.INSTANCE.modelToEntityList(modelList);
         return billService.saveBatch(billList);
     }
 
@@ -126,8 +126,7 @@ public class BillMybatisRepository implements BillRepository {
     private LambdaQueryWrapper<Bill> getQueryBillWrapper(BillModel model) {
         Bill bill = BillEntityConverter.INSTANCE.modelToEntity(model);
 
-        LambdaQueryWrapper<Bill> queryWrapper = Wrappers.lambdaQuery();
-        queryWrapper
+        var queryWrapper = Wrappers.<Bill>lambdaQuery()
                 .eq(Objects.nonNull(bill.getId()), Bill::getId, bill.getId())
                 .eq(Objects.nonNull(bill.getType()), Bill::getType, bill.getType())
                 .eq(Objects.nonNull(bill.getCategoryId()), Bill::getCategoryId, bill.getCategoryId())
