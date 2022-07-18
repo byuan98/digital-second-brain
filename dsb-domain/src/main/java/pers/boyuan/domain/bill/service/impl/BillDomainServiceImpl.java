@@ -2,8 +2,12 @@ package pers.boyuan.domain.bill.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pers.boyuan.common.util.EasyExcelUtils;
+import pers.boyuan.domain.bill.converter.BillModelConverter;
+import pers.boyuan.domain.bill.model.BillExportExcelBO;
 import pers.boyuan.domain.bill.model.BillModel;
 import pers.boyuan.domain.bill.repository.BillRepository;
 import pers.boyuan.domain.bill.service.BillDomainService;
@@ -75,6 +79,10 @@ public class BillDomainServiceImpl implements BillDomainService {
      */
     @Override
     public void exportExcel(BillModel model, HttpServletResponse response) {
+        var queryResult = billRepository.query(model);
 
+        var exportList = BillModelConverter.INSTANCE.modelToExportExcelBOList(queryResult);
+
+        EasyExcelUtils.easyExcelWrite(response, BillExportExcelBO.class, "账单", "账单", exportList);
     }
 }

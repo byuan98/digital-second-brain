@@ -3,6 +3,7 @@ package pers.boyuan.application.bill.impl;
 import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.var;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,7 +71,7 @@ public class BillAppServiceImpl implements BillAppService {
      */
     @Override
     public Boolean update(UpdateBillAO ao) {
-        BillModel model = BillDomainConverter.INSTANCE.updateToModel(ao);
+        var model = BillDomainConverter.INSTANCE.updateToModel(ao);
         return billDomainService.update(model);
     }
 
@@ -84,7 +85,7 @@ public class BillAppServiceImpl implements BillAppService {
     public IPage<QueryBillVO> queryPage(QueryBillPageAO ao) {
         IPage<QueryBillVO> result = new Page<>(ao.getPageIndex(), ao.getPageSize());
 
-        BillModel model = BillDomainConverter.INSTANCE.queryPageToModel(ao);
+        var model = BillDomainConverter.INSTANCE.queryPageToModel(ao);
         IPage<BillModel> modelPage = billDomainService.queryPage(model);
 
         BeanUtils.copyProperties(modelPage, result);
@@ -101,7 +102,8 @@ public class BillAppServiceImpl implements BillAppService {
      */
     @Override
     public void exportExcel(ExportBillAO ao, HttpServletResponse response) {
-
+        var model = BillDomainConverter.INSTANCE.exportToModel(ao);
+        billDomainService.exportExcel(model, response);
     }
 
 }

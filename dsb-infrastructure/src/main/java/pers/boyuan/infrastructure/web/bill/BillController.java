@@ -3,6 +3,7 @@ package pers.boyuan.infrastructure.web.bill;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.boyuan.api.in.bill.CreateBillAO;
@@ -36,35 +37,35 @@ public class BillController {
     @PostMapping("/create")
     @ApiOperation("创建账单表数据")
     public Response<Boolean> create(@RequestBody List<CreateBillAO> aoList) {
-        Boolean createFlag = billAppService.create(aoList);
+        var createFlag = billAppService.create(aoList);
         return createFlag ? Response.success(Boolean.TRUE) : Response.error(ResponseEnum.FAIL);
     }
 
     @PostMapping("/delete")
     @ApiOperation("根据主键id删除账单表数据")
     public Response<Boolean> delete(@RequestBody List<Long> idList) {
-        Boolean deleteFlag = billAppService.delete(idList);
+        var deleteFlag = billAppService.delete(idList);
         return deleteFlag ? Response.success(Boolean.TRUE) : Response.error(ResponseEnum.FAIL);
     }
 
-    @PostMapping("update")
+    @PostMapping("/update")
     @ApiOperation("更新账单表数据")
     public Response<Boolean> update(@RequestBody @Valid UpdateBillAO ao) {
-        Boolean updateFlag = billAppService.update(ao);
+        var updateFlag = billAppService.update(ao);
         return updateFlag ? Response.success(Boolean.TRUE) : Response.error(ResponseEnum.FAIL);
     }
 
     @PostMapping("/queryPage")
     @ApiOperation("查询账单表数据分页")
     public PageResponse<QueryBillVO> queryPage(@RequestBody QueryBillPageAO ao) {
-        IPage<QueryBillVO> iPage = billAppService.queryPage(ao);
+        var iPage = billAppService.queryPage(ao);
         return PageResponse.success(iPage.getTotal(), iPage.getCurrent(), iPage.getSize(), iPage.getRecords());
     }
 
-    @GetMapping("exportExcel")
+    @GetMapping("/exportExcel")
     @ApiOperation("根据指定条件导出账单表数据为excel")
     public void exportExcel(ExportBillAO ao, HttpServletResponse response) {
-        return;
+        billAppService.exportExcel(ao, response);
     }
 
 }

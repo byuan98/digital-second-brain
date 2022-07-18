@@ -3,6 +3,7 @@ package pers.boyuan.application.bill.converter;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import pers.boyuan.api.in.bill.CreateBillAO;
+import pers.boyuan.api.in.bill.ExportBillAO;
 import pers.boyuan.api.in.bill.QueryBillPageAO;
 import pers.boyuan.api.in.bill.UpdateBillAO;
 import pers.boyuan.api.out.bill.QueryBillVO;
@@ -26,5 +27,7 @@ public interface BillDomainConverter {
     BillModel queryPageToModel(QueryBillPageAO ao);
 
     List<QueryBillVO> modelToQueryBill(List<BillModel> modelList);
+
+    BillModel exportToModel(ExportBillAO ao);
 
 }
