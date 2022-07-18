@@ -2,6 +2,7 @@ package pers.boyuan.infrastructure.web.dictionary;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.boyuan.api.in.dictionary.CreateDictionaryAO;
@@ -34,28 +35,28 @@ public class DictionaryController {
     @PostMapping("/create")
     @ApiOperation("创建字典数据")
     public Response<Boolean> create(@RequestBody @Valid ValidationList<CreateDictionaryAO> aoList) {
-        Boolean createFlag = dictionaryAppService.create(aoList);
+        var createFlag = dictionaryAppService.create(aoList);
         return createFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
 
     @PostMapping("/delete")
     @ApiOperation("根据参数删除词典")
     public Response<Boolean> delete(@RequestBody DeleteDictionaryAO ao) {
-        Boolean deleteFlag = dictionaryAppService.delete(ao);
+        var deleteFlag = dictionaryAppService.delete(ao);
         return deleteFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
 
     @PostMapping("/update")
     @ApiOperation("更新字典数据")
     public Response<Boolean> update(@RequestBody UpdateDictionaryAO ao) {
-        Boolean updateFlag = dictionaryAppService.update(ao);
+        var updateFlag = dictionaryAppService.update(ao);
         return updateFlag ? Response.success() : Response.error(ResponseEnum.FAIL);
     }
 
     @GetMapping("/query")
     @ApiOperation("根据type查询字典数据，无参拉取全量")
     public Response<Map<String, List<QueryDictionaryVO>>> query(@RequestParam(name = "typeList", required = false) List<String> typeList) {
-        Map<String, List<QueryDictionaryVO>> result = dictionaryAppService.query(typeList);
+        var result = dictionaryAppService.query(typeList);
         return Response.success(result);
     }
 
