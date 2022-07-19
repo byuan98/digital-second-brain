@@ -6,6 +6,8 @@ target/
 
 /dsblog/
 
+*.log
+
 ### STS ###
 .apt_generated
 .classpath
