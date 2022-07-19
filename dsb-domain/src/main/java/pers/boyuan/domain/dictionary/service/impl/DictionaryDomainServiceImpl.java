@@ -2,6 +2,7 @@ package pers.boyuan.domain.dictionary.service.impl;
 
 import cn.hutool.core.collection.CollectionUtil;
 import lombok.var;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.boyuan.common.util.ObjectFieldUtil;
@@ -61,10 +62,21 @@ public class DictionaryDomainServiceImpl implements DictionaryDomainService {
      * 根据参数更新字典数据
      *
      * @param model 入参
-     * @return 是否创建成功
+     * @return 是否更新成功
      */
     @Override
     public Boolean update(DictionaryModel model) {
+        if (ObjectFieldUtil.allBlank(model)) {
+            return Boolean.FALSE;
+        }
+
+        if (StringUtils.isBlank(model.getType())
+                && StringUtils.isBlank(model.getCode())
+                && StringUtils.isBlank(model.getName())
+                && StringUtils.isBlank(model.getRemark())) {
+            return Boolean.FALSE;
+        }
+
         return dictionaryRepository.update(model);
     }
 
