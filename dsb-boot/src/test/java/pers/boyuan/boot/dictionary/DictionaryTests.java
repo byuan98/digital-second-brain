@@ -74,7 +74,7 @@ public class DictionaryTests {
 
     @Test
     void queryPartTest() {
-        var ao = Arrays.asList("bill_category");
+        var ao = Arrays.asList("test");
 
         var partEntity = dictionaryAppService.query(ao);
 
